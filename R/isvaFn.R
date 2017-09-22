@@ -27,9 +27,9 @@ function(data.m,pheno.v,ncomp=NULL,icamethod=icamethod){
     tmp.s <- sort(pv.v,decreasing=FALSE,index.return=TRUE);
     qv.o <- qvalue(pv.v);
     nsig <- length(which(qv.o$qvalues<0.05));
-    if( nsig < 500 ){
-     nsig <- 500;
-    }
+    # if( nsig < 500 ){
+    #  nsig <- 500;
+    # }
     red.m <- data.m[tmp.s$ix[1:nsig],];
     ica.o <- JADE(red.m,n.comp=ncomp);
     cor.v <- abs(cor(tmp.m[,k],ica.o$A));
